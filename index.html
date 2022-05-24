@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href=".images/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="main.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="header-wrapper">
+      <div class="text-wrapper">
+        <img src="images/logo.svg" alt="rock, paper, scissors">
+      </div>
+      <div class="score-wrapper">
+          <span class="score-text">score</span>
+          <input type="number" name="score" id="scoreInput" class="score-figure" value="0" readonly>
+      </div>
+    </div>
+  </header>
+  <main>
+    
+    <section id="choose-section">
+      <img class="background-triangle" src="images/bg-triangle.svg" alt="">
+      
+      <div class="button-wrapper">
+        <button onclick="chooseOption('paper')" type="button" id="select-paper">
+          <div class="paper-wrapper">
+            <img src="images/icon-paper.svg" alt="">
+          </div>
+        </button>
+      </div>
+      <div class="button-wrapper">
+        <button onclick="chooseOption('scissors')" type="button" id="select-scissors">
+          <div class="scissors-wrapper">
+            <img src="images/icon-scissors.svg" alt="">
+          </div>
+        </button>
+      </div>
+      <div class="button-wrapper">
+        <button onclick="chooseOption('rock')" type="button" id="select-rock">
+          <div class="rock-wrapper">
+            <img src="images/icon-rock.svg" alt="">
+          </div>
+        </button>
+      </div>
+  
+  
+    </section>
+    
+    <section id="scoring-section">
+      <div id="your-pick">
+
+        <!-- <div class="your-pick-outer select-rock rock-radial-shadow">
+          <div class="your-pick-inner">
+            <img class="your-option" src="images/icon-rock.svg" alt="">
+          </div>
+        </div> -->
+        
+        <!-- <div class="your-pick-outer select-paper paper-radial-shadow">
+          <div class="your-pick-inner">
+            <img class="your-option" src="images/icon-paper.svg" alt="">
+          </div>
+        </div> -->
+        
+        <!-- <div class="your-pick-outer select-scissors scissors-radial-shadow">
+          <div class="your-pick-inner">
+            <img class="your-option" src="images/icon-scissors.svg" alt="">
+          </div>
+        </div> -->
+        <!-- <h3>you picked</h3> -->
+      </div>
+      
+      <div id="computer-pick">
+
+        <!-- <div class="computer-pick-outer select-rock">
+          <div class="computer-pick-inner">
+            <img class="computer-option" src="images/icon-rock.svg" alt="">
+          </div>
+          <div class="computer-inner-placeholder"></div>
+        </div> -->
+        
+        <!-- <div class="computer-pick-outer select-paper">
+          <div class="computer-pick-inner">
+            <img class="computer-option" src="images/icon-paper.svg" alt="">
+          </div>
+          <div class="computer-inner-placeholder"></div>
+        </div> -->
+        
+        <!-- <div class="computer-pick-outer select-scissors">
+          <div class="computer-pick-inner">
+            <img class="computer-option" src="images/icon-scissors.svg" alt="">
+          </div>
+          <div class="computer-inner-placeholder"></div>
+        </div> -->
+        
+        <!-- <h3>the house picked</h3> -->
+      </div>
+
+      <div id="win-lose-prompt">
+        <!-- <h2 id="win-lose">you win</h2> -->
+        <button type="button" id="play-again" onclick="resetGame()">play again</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section id="modal">
+      <div class="modal-wrapper">
+        <h2>
+          rules
+          <button class="close-modal" type="button" onclick="showRules(false)"><img src="images/icon-close.svg" alt="close modal"></button>
+        </h2>
+        <img src="images/image-rules.svg" alt="">
+        <button id="close-modal" type="button" onclick="showRules(false)"><img src="images/icon-close.svg" alt="close modal"></button>
+      </div>
+    </section>
+    <button type="button" onclick="showRules(true)">rules</button>
+  </footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
