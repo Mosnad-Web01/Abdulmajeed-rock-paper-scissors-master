@@ -87,7 +87,7 @@
                 signalWin(yourOption);
                 updateScore();
             } else if (result === 'lose') {
-                // signalLoss(computerOption);
+                signalLoss(computerOption);
             }
             
             // signifyResult(result, yourOption, computerOption);
@@ -96,8 +96,8 @@
 
     }
 
-    let boxShadow = [];
     function signalWin(yourOption) {
+        let boxShadow = [];
         let element = $('.your-pick-outer');
 
         if (yourOption == 'rock') {
@@ -116,19 +116,38 @@
         ];
         let x = 0;
         
-        // $(element).css('boxShadow', boxShadow[3]);
         setInterval(() => {
             let y = x % boxShadow.length;
             $(element).css('boxShadow', boxShadow[y]);
             x++;
         }, 500);
+    }
 
-        // while (indicate === true) {
-        //     // console.log('inside loop');
-        //     console.log(boxShadow[y]);
-        //     setTimeout(() => {
-        //     }, 1000);
-        // }
+    function signalLoss(computerOption) {
+        let boxShadow = [];
+        let element = $('.computer-pick-outer');
+
+        if (computerOption == 'rock') {
+            primaryColor = 'hsla(349, 71%, 35%, 0.8)';
+        } else if (computerOption == 'paper') {
+            primaryColor = 'hsla(230, 89%, 45%, 0.8)';
+        } else {
+            primaryColor = 'hsla(39, 89%, 32%, 0.8)';
+        }
+
+        boxShadow = [
+            `inset 0 -5px 2px 0px ${primaryColor}`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4), 0 0 0px 75px hsla(228, 25%, 31%, 0.25)`
+        ];
+        let x = 0;
+        
+        setInterval(() => {
+            let y = x % boxShadow.length;
+            $(element).css('boxShadow', boxShadow[y]);
+            x++;
+        }, 500);
     }
 
     let content;
@@ -157,35 +176,6 @@
     let secondaryColor;
     let mainElement;
     let otherElement;
-    function signifyResult(result, yourOption, computerOption) {
-        
-        if (result != 'draw' && indicate === true) {
-            setInterval(() => {
-                
-                setTimeout(() => {
-                    $(mainElement).css('boxShadow', `inset 0 -5px 2px 0px ${primaryColor}`);
-                }, 500);
-                
-                setTimeout(() => {
-                    $(mainElement).css('boxShadow', `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75)`);
-                }, 1000);
-                
-                setTimeout(() => {
-                    $(mainElement).css('boxShadow', `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4)`);
-                }, 1500);
-                
-                setTimeout(() => {
-                    $(mainElement).css('boxShadow', `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4), 0 0 0px 75px hsla(228, 25%, 31%, 0.25)`);
-                }, 2000);
-                
-                $(otherElement).css('boxShadow', `inset 0 -5px 2px 0px ${secondaryColor}`);
-                // console.log(mainElement);
-                // console.log(primaryColor);
-    
-            }, 2000);
-        }
-
-    }
 
     let score = 0;
     function updateScore() {
