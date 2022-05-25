@@ -226,7 +226,7 @@
         $('#scoreInput').val(score);
 
         if (score == 4) {
-            $('#comrade-warning').css('display', 'flex');
+            // $('#comrade-warning').css('display', 'flex');
         }
         
     }
