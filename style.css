@@ -352,6 +352,39 @@ footer button{
     /* font-size: 1.1em; */
 }
 
+/* comrade styling */
+#comrade-warning{
+    box-sizing: border-box;
+    padding-block: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    z-index: 100;
+    display: none;
+
+}
+
+#comrade-warning h3{
+    box-sizing: border-box;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    font-size: 2em;
+    text-align: center;
+}
+
+#comrade-warning img{
+    height: 50%;
+    margin-top: -60px;
+}
+
 @media only screen and (min-width: 1366px){
 
     .header-wrapper{
@@ -381,7 +414,7 @@ footer button{
         padding-inline: 30%;
         /* padding-block-end: 10%; */
         box-sizing: border-box;
-        display: none;
+        display: flex;
     }
 
     #choose-section > div > button{
@@ -405,6 +438,7 @@ footer button{
         box-sizing: border-box;
         flex-flow: row wrap;
         gap: 0;
+        display: none;
     }
     
     #your-pick{
@@ -445,12 +479,12 @@ footer button{
     }
     
     #win-lose-prompt{
-        /* display: none; */
         /* order: 1; */
         /* background-color: teal; */
         box-sizing: border-box;
         height: 100%;
         width: 20%;
+        display: none;
     }
 
     .your-pick-outer, .computer-pick-outer{
@@ -478,6 +512,10 @@ footer button{
 
     .scissors-radial-shadow{
         box-shadow: inset 0 -5px 2px 0px hsla(39, 89%, 32%, 0.8), 0 0 0px 60px hsla(228, 25%, 31%, 0.75), 0 0 0px 130px hsla(228, 25%, 31%, 0.4), 0 0 0px 200px hsla(228, 25%, 31%, 0.25);
+    }
+
+    #play-again:hover{
+        color: hsl(349, 71%, 52%);
     }
 
     /* footer styling */
@@ -515,6 +553,9 @@ footer button{
         width: 30%;
         height: 50%;
         border-radius: 10px;
+        padding: 30px;
+        justify-content: flex-start;
+        gap: 30px;
     }
 
     .modal-wrapper h2{

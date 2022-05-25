@@ -1,6 +1,11 @@
 // $(document).ready(function(){
 
-    // function to show rules and hiode rules
+    let screenWidth = window.innerWidth;
+    if (screenWidth >= 1366) {
+        // remove win lose prompt in desktop view
+        $('#win-lose-prompt').css('display', 'none');
+    }
+    // function to show rules and hide rules
     function showRules(e) {
         if (e === true) { // if true is passed to the function, show choose-section
             return $("#modal").css('display', 'flex');
@@ -64,6 +69,7 @@
 
     let indicate = false;
     function displayResult(result, yourOption, computerOption) {
+        screenWidth = window.innerWidth;
         $("#choose-section").css('display', 'none');
         $("#scoring-section").css('display', 'flex');
         
@@ -81,7 +87,11 @@
         }, 1500);
 
         setTimeout(() => {
-            appendResult(result);
+            if (screenWidth >= 1366) {
+                appendDesktopResult(result);
+            } else {
+                appendResult(result);
+            }
 
             if (result === 'win') {
                 signalWin(yourOption);
@@ -98,6 +108,18 @@
 
     function signalWin(yourOption) {
         let boxShadow = [];
+        let firstRing = 20;
+        let secondRing = 45;
+        let thirdRing = 75;
+
+        screenWidth = window.innerWidth;
+        
+        if (screenWidth >= 1366) {
+            firstRing = 60;
+            secondRing = 130;
+            thirdRing = 200;
+        }
+
         let element = $('.your-pick-outer');
 
         if (yourOption == 'rock') {
@@ -110,10 +132,11 @@
 
         boxShadow = [
             `inset 0 -5px 2px 0px ${primaryColor}`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75)`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4)`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4), 0 0 0px 75px hsla(228, 25%, 31%, 0.25)`
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75), 0 0 0px ${secondRing}px hsla(228, 25%, 31%, 0.4)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75), 0 0 0px ${secondRing}px hsla(228, 25%, 31%, 0.4), 0 0 0px ${thirdRing}px hsla(228, 25%, 31%, 0.25)`
         ];
+
         let x = 0;
         
         setInterval(() => {
@@ -125,6 +148,18 @@
 
     function signalLoss(computerOption) {
         let boxShadow = [];
+        let firstRing = 20;
+        let secondRing = 45;
+        let thirdRing = 75;
+
+        screenWidth = window.innerWidth;
+        
+        if (screenWidth >= 1366) {
+            firstRing = 60;
+            secondRing = 130;
+            thirdRing = 200;
+        }
+
         let element = $('.computer-pick-outer');
 
         if (computerOption == 'rock') {
@@ -137,9 +172,9 @@
 
         boxShadow = [
             `inset 0 -5px 2px 0px ${primaryColor}`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75)`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4)`,
-            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px 20px hsla(228, 25%, 31%, 0.75), 0 0 0px 45px hsla(228, 25%, 31%, 0.4), 0 0 0px 75px hsla(228, 25%, 31%, 0.25)`
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75), 0 0 0px ${secondRing}px hsla(228, 25%, 31%, 0.4)`,
+            `inset 0 -5px 2px 0px ${primaryColor}, 0 0 0px ${firstRing}px hsla(228, 25%, 31%, 0.75), 0 0 0px ${secondRing}px hsla(228, 25%, 31%, 0.4), 0 0 0px ${thirdRing}px hsla(228, 25%, 31%, 0.25)`
         ];
         let x = 0;
         
@@ -171,6 +206,12 @@
         $('#play-again').before(`<h2 id="win-lose">you ${data}</h2>`);
         $('#win-lose-prompt').css('visibility', 'visible');
     }
+
+    function appendDesktopResult(data) {
+        $('#play-again').before(`<h2 id="win-lose">you ${data}</h2>`);
+        $('#win-lose-prompt').css('display', 'flex');
+        $('#win-lose-prompt').css('visibility', 'visible');
+    }
     
     let primaryColor;
     let secondaryColor;
@@ -183,18 +224,28 @@
         score = parseInt(score);
         score += 1;
         $('#scoreInput').val(score);
+
+        if (score == 4) {
+            $('#comrade-warning').css('display', 'flex');
+        }
         
     }
 
     function resetGame() {
+        screenWidth = window.innerWidth;
+
         $('.your-pick-outer').remove();
         $('.h3').remove();
         $('.computer-pick-outer').remove();
         $('#win-lose').remove();
-        $('#win-lose-prompt').css('visibility', 'hidden');
         $("#choose-section").css('display', 'flex');
         $("#scoring-section").css('display', 'none');
+        $('#win-lose-prompt').css('visibility', 'hidden');
         indicate = false;
+        
+        if (screenWidth >= 1366) {
+            $('#win-lose-prompt').css('display', 'none');
+        }
         clearInterval();
     }
 
