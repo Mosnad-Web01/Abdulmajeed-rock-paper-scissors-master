@@ -25,6 +25,7 @@ header{
     width: 100vw;
     height: 160px;
     height: 25vh;
+    max-height: 250px;
     /* background-color: red; */
     box-sizing: border-box;
     padding: 30px;
@@ -96,6 +97,8 @@ header{
 
 #choose-section{
     width: 100%;
+    margin-inline: auto;
+    max-width: 550px;
     height: 55vh;
     /* background-color: red; */
     position: relative; 
@@ -412,6 +415,7 @@ footer button{
     #choose-section{
         height: 65vh;
         padding-inline: 30%;
+        max-width: unset;
         /* padding-block-end: 10%; */
         box-sizing: border-box;
         display: flex;
@@ -568,5 +572,18 @@ footer button{
         margin: 0;
     }
 
+
+}
+
+@media only screen and (min-width: 1920px){
+    #choose-section > div > button{
+        width: 270px;
+        height: 270px;
+    }
+
+    #choose-section > div > button > div{
+        width: 200px;
+        height: 200px;
+    }
 
 }
