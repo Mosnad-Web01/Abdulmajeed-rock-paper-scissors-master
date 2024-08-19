@@ -1,142 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href=".images/favicon-32x32.png">
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
-  
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-  <script src="jquery-3.6.0.min.js"></script>
-  <script src="main.js"></script>
-
-</head>
-<body>
-  <header>
-    <div class="header-wrapper">
-      <div class="text-wrapper">
-        <img src="images/logo.svg" alt="rock, paper, scissors">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .choice {
+          @apply bg-white border-[#606e85] rounded-full h-28 w-28 flex items-center justify-center relative;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gradient my-12 max-h-screen">
+    <header
+      class="border-4 border-[#606e85] rounded-md flex justify-between p-4 max-w-screen-sm mx-auto"
+    >
+      <figure class="scale-[0.8]">
+        <img src="./images/logo.svg" alt="Rock, Paper, Scissors" />
+      </figure>
+      <div class="bg-white grid grid-row-2 place-content-center py-4 px-6">
+        <p
+          class="uppercase font-semibold text-[#2a46c0] tracking-widest text-sm"
+        >
+          Score
+        </p>
+        <p id="score" class="text-5xl font-bold text-center text-[#3b4363]">
+          12
+        </p>
       </div>
-      <div class="score-wrapper">
-          <span class="score-text">score</span>
-          <input type="number" name="score" id="scoreInput" class="score-figure" value="0" readonly>
-      </div>
-    </div>
-  </header>
-  <main>
-    
-    <section id="choose-section">
-      <img class="background-triangle" src="images/bg-triangle.svg" alt="">
-      
-      <div class="button-wrapper">
-        <button onclick="chooseOption('paper')" type="button" id="select-paper">
-          <div class="paper-wrapper">
-            <img src="images/icon-paper.svg" alt="">
-          </div>
+    </header>
+    <main>
+      <section
+        class="grid grid-cols-3 grid-rows-3 place-items-center my-10 gap-4"
+        data-name="bored"
+        style="
+          grid-template-areas:
+            ' . scissors . '
+            ' spock .  paper  '
+            ' lizard . rock ';
+        "
+      >
+        <button
+          class="choice"
+          data-choice="paper"
+          id="paper"
+          style="grid-area: paper"
+        >
+          <figure>
+            <img src="./images/icon-paper.svg" alt="Paper" />
+          </figure>
         </button>
-      </div>
-      <div class="button-wrapper">
-        <button onclick="chooseOption('scissors')" type="button" id="select-scissors">
-          <div class="scissors-wrapper">
-            <img src="images/icon-scissors.svg" alt="">
-          </div>
+
+        <button
+          class="choice"
+          data-choice="scissors"
+          id="scissors"
+          style="grid-area: scissors"
+        >
+          <figure>
+            <img src="./images/icon-scissors.svg" alt="Scissors" />
+          </figure>
         </button>
-      </div>
-      <div class="button-wrapper">
-        <button onclick="chooseOption('rock')" type="button" id="select-rock">
-          <div class="rock-wrapper">
-            <img src="images/icon-rock.svg" alt="">
-          </div>
+
+        <button
+          class="choice"
+          data-choice="rock"
+          id="rock"
+          style="grid-area: rock"
+        >
+          <figure>
+            <img src="./images/icon-rock.svg" alt="Rock" />
+          </figure>
         </button>
-      </div>
-  
-  
-    </section>
-    
-    <section id="scoring-section">
-      <div id="your-pick">
 
-        <!-- <div class="your-pick-outer select-rock rock-radial-shadow">
-          <div class="your-pick-inner">
-            <img class="your-option" src="images/icon-rock.svg" alt="">
-          </div>
-        </div> -->
-        
-        <!-- <div class="your-pick-outer select-paper paper-radial-shadow">
-          <div class="your-pick-inner">
-            <img class="your-option" src="images/icon-paper.svg" alt="">
-          </div>
-        </div> -->
-        
-        <!-- <div class="your-pick-outer select-scissors scissors-radial-shadow">
-          <div class="your-pick-inner">
-            <img class="your-option" src="images/icon-scissors.svg" alt="">
-          </div>
-        </div> -->
-        <!-- <h3>you picked</h3> -->
-      </div>
-      
-      <div id="computer-pick">
+        <button
+          class="choice"
+          data-choice="lizard"
+          id="lizard"
+          style="grid-area: lizard"
+        >
+          <figure>
+            <img src="./images/icon-lizard.svg" alt="Lizard" />
+          </figure>
+        </button>
 
-        <!-- <div class="computer-pick-outer select-rock">
-          <div class="computer-pick-inner">
-            <img class="computer-option" src="images/icon-rock.svg" alt="">
-          </div>
-          <div class="computer-inner-placeholder"></div>
-        </div> -->
-        
-        <!-- <div class="computer-pick-outer select-paper">
-          <div class="computer-pick-inner">
-            <img class="computer-option" src="images/icon-paper.svg" alt="">
-          </div>
-          <div class="computer-inner-placeholder"></div>
-        </div> -->
-        
-        <!-- <div class="computer-pick-outer select-scissors">
-          <div class="computer-pick-inner">
-            <img class="computer-option" src="images/icon-scissors.svg" alt="">
-          </div>
-          <div class="computer-inner-placeholder"></div>
-        </div> -->
-        
-        <!-- <h3>the house picked</h3> -->
-      </div>
+        <button
+          class="choice"
+          data-choice="spock"
+          id="spock"
+          style="grid-area: spock"
+        >
+          <figure>
+            <img src="./images/icon-spock.svg" alt="Spock" />
+          </figure>
+        </button>
+      </section>
+      <style>
+        section button.choice {
+          width: 100px;
+          height: 100px;
+        }
 
-      <div id="win-lose-prompt">
-        <!-- <h2 id="win-lose">you win</h2> -->
-        <button type="button" id="play-again" onclick="resetGame()">play again</button>
+        section {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      </style>
+
+      <p
+        class="text-center text-3xl font-bold text-[#3b4363] uppercase"
+        id="result"
+      ></p>
+      <button
+        id="play-again"
+        class="py-1 px-8 border uppercase rounded-md text-white tracking-widest font-semibold hover:bg-[#606e85] mt-8 mx-auto block"
+      >
+        play Again
+      </button>
+      <button
+        id="rules"
+        class="py-1 px-10 border uppercase rounded-md text-white tracking-widest font-semibold hover:bg-[#606e85] mt-8 float-end"
+      >
+        Rules
+      </button>
+      <div
+        id="rules-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+      >
+        <div class="bg-white p-4 rounded-md">
+          <img
+            src="images/image-rules-bonus.svg"
+            alt="Rules"
+            class="mb-4"
+            id="rules-img"
+          />
+          <button
+            id="close-modal"
+            class="py-1 px-8 border uppercase rounded-md text-[#606e85] tracking-widest font-semibold hover:bg-[#606e85] hover:text-white block mx-auto"
+          >
+            Close
+          </button>
+        </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <section id="modal">
-      <div class="modal-wrapper">
-        <h2>
-          rules
-          <button class="close-modal" type="button" onclick="showRules(false)"><img src="images/icon-close.svg" alt="close modal"></button>
-        </h2>
-        <img src="images/image-rules.svg" alt="">
-        <button id="close-modal" type="button" onclick="showRules(false)"><img src="images/icon-close.svg" alt="close modal"></button>
+    </main>
+
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Abdulmajeed Alselmi</a>.
       </div>
-    </section>
-    <button type="button" onclick="showRules(true)">rules</button>
-  </footer>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-  <div id="comrade-warning">
-    <h3 class="comrade-heading">
-      Comrade you want beat cultist high score, you nor dey fear! &#128528
-    </h3>
-    <img src="images/comrade.png" alt="comrade">
-  </div>
-</body>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
 </html>
